@@ -1,0 +1,205 @@
+month,channel,campaign,visitors,leads,mqls,sqls,customers,spend_usd,revenue_usd
+2025-07,Organic Search,SEO - Blog,6493,285,173,74,16,0.0,72464.58
+2025-07,Organic Search,SEO - Comparison Pages,6514,249,134,50,16,0.0,73706.87
+2025-07,Organic Search,SEO - Landing Pages,5898,236,131,43,14,0.0,63352.67
+2025-07,Paid Search,Google Ads - Brand,2869,221,123,47,8,5984.8,29001.54
+2025-07,Paid Search,Google Ads - Competitor,2688,187,100,41,8,5498.55,33293.12
+2025-07,Paid Search,Google Ads - Generic,2720,150,74,23,5,5640.2,23095.87
+2025-07,Paid Social,LinkedIn - Lead Gen,4240,137,57,15,1,4466.55,4429.94
+2025-07,Paid Social,Meta - Retargeting,3567,109,35,9,1,4084.7,4553.72
+2025-07,Paid Social,Meta - Prospecting,3950,142,48,10,1,4319.88,4282.2
+2025-07,Email,Newsletter,2158,193,117,53,14,97.78,57683.69
+2025-07,Email,Nurture Sequence,1828,149,98,39,9,87.4,35459.35
+2025-07,Email,Product Updates,2097,182,118,56,16,111.44,60486.17
+2025-07,Referral,Partner Referral,1713,136,94,46,14,0.0,52666.79
+2025-07,Referral,Customer Referral,2117,196,122,56,22,0.0,80969.66
+2025-07,Direct,Direct/None,6197,403,217,77,16,0.0,72819.62
+2025-07,Content Syndication,Sponsored Content,2662,65,18,2,0,9234.59,0.0
+2025-07,Content Syndication,Webinar Syndication,2354,60,16,3,0,8600.63,0.0
+2025-08,Organic Search,SEO - Blog,6734,313,179,59,15,0.0,62886.43
+2025-08,Organic Search,SEO - Comparison Pages,6156,237,114,47,10,0.0,43021.37
+2025-08,Organic Search,SEO - Landing Pages,6189,288,135,63,17,0.0,62462.08
+2025-08,Paid Search,Google Ads - Brand,3230,209,118,42,9,6466.88,35889.99
+2025-08,Paid Search,Google Ads - Competitor,3263,206,88,34,8,6359.28,34144.68
+2025-08,Paid Search,Google Ads - Generic,2862,198,92,34,8,6333.13,29646.03
+2025-08,Paid Social,LinkedIn - Lead Gen,4864,151,49,12,1,5703.3,4588.4
+2025-08,Paid Social,Meta - Retargeting,4087,168,59,14,1,4887.76,3777.41
+2025-08,Paid Social,Meta - Prospecting,3734,127,55,15,2,4428.43,9391.49
+2025-08,Email,Newsletter,2174,171,110,52,14,99.88,63153.37
+2025-08,Email,Nurture Sequence,2008,200,110,42,14,93.44,53142.29
+2025-08,Email,Product Updates,2226,217,118,49,16,121.8,67214.94
+2025-08,Referral,Partner Referral,1931,147,87,37,15,0.0,63119.64
+2025-08,Referral,Customer Referral,2288,224,132,74,31,0.0,115789.12
+2025-08,Direct,Direct/None,6714,432,200,60,14,0.0,66837.19
+2025-08,Content Syndication,Sponsored Content,2529,73,18,3,0,8153.82,0.0
+2025-08,Content Syndication,Webinar Syndication,2637,78,24,5,0,9169.29,0.0
+2025-09,Organic Search,SEO - Blog,5892,223,134,59,14,0.0,60670.12
+2025-09,Organic Search,SEO - Comparison Pages,7648,358,191,72,19,0.0,88597.73
+2025-09,Organic Search,SEO - Landing Pages,6793,274,138,60,19,0.0,69423.42
+2025-09,Paid Search,Google Ads - Brand,3541,197,108,34,6,8062.18,22671.42
+2025-09,Paid Search,Google Ads - Competitor,3221,180,79,22,3,6323.95,10911.78
+2025-09,Paid Search,Google Ads - Generic,3538,246,119,38,8,7987.04,37139.41
+2025-09,Paid Social,LinkedIn - Lead Gen,3963,121,42,9,1,4286.29,3632.06
+2025-09,Paid Social,Meta - Retargeting,4418,156,52,14,1,5272.73,3694.88
+2025-09,Paid Social,Meta - Prospecting,5065,205,89,24,3,5730.27,13654.61
+2025-09,Email,Newsletter,2044,176,106,54,15,99.85,65637.75
+2025-09,Email,Nurture Sequence,2135,155,92,40,10,103.92,40316.54
+2025-09,Email,Product Updates,2177,176,111,45,16,117.91,66815.15
+2025-09,Referral,Partner Referral,2177,209,150,79,34,0.0,148494.19
+2025-09,Referral,Customer Referral,2150,223,132,71,31,0.0,134667.67
+2025-09,Direct,Direct/None,7060,423,177,68,13,0.0,59528.48
+2025-09,Content Syndication,Sponsored Content,2950,82,26,5,0,10511.01,0.0
+2025-09,Content Syndication,Webinar Syndication,2970,64,19,3,0,10442.05,0.0
+2025-10,Organic Search,SEO - Blog,7762,348,197,92,20,0.0,73610.27
+2025-10,Organic Search,SEO - Comparison Pages,7460,324,192,82,21,0.0,95146.6
+2025-10,Organic Search,SEO - Landing Pages,6632,282,146,50,11,0.0,45339.35
+2025-10,Paid Search,Google Ads - Brand,3436,243,123,50,12,7185.83,48530.56
+2025-10,Paid Search,Google Ads - Competitor,4081,288,163,48,12,8805.05,44683.46
+2025-10,Paid Search,Google Ads - Generic,3655,255,108,37,9,7361.36,37329.94
+2025-10,Paid Social,LinkedIn - Lead Gen,4666,150,64,17,1,5642.82,4677.79
+2025-10,Paid Social,Meta - Retargeting,4440,176,58,17,2,5030.64,7367.91
+2025-10,Paid Social,Meta - Prospecting,5314,150,52,11,1,5492.58,4717.4
+2025-10,Email,Newsletter,2485,172,87,32,10,131.74,38705.77
+2025-10,Email,Nurture Sequence,2623,183,119,62,21,136.35,97142.96
+2025-10,Email,Product Updates,2046,153,81,36,12,104.96,55709.1
+2025-10,Referral,Partner Referral,2128,221,130,59,24,0.0,104173.08
+2025-10,Referral,Customer Referral,2057,204,114,65,27,0.0,99510.35
+2025-10,Direct,Direct/None,7521,493,233,85,21,0.0,78810.15
+2025-10,Content Syndication,Sponsored Content,3365,77,23,4,0,12815.32,0.0
+2025-10,Content Syndication,Webinar Syndication,2975,71,21,3,0,9950.34,0.0
+2025-11,Organic Search,SEO - Blog,6998,328,187,72,19,0.0,81914.05
+2025-11,Organic Search,SEO - Comparison Pages,6760,247,132,52,12,0.0,51394.47
+2025-11,Organic Search,SEO - Landing Pages,7586,361,207,76,24,0.0,98726.09
+2025-11,Paid Search,Google Ads - Brand,3711,227,113,43,11,8449.37,46250.35
+2025-11,Paid Search,Google Ads - Competitor,3598,261,123,48,10,6975.3,36607.95
+2025-11,Paid Search,Google Ads - Generic,3943,210,98,32,5,7972.1,22528.96
+2025-11,Paid Social,LinkedIn - Lead Gen,4074,161,67,15,1,4571.78,3720.79
+2025-11,Paid Social,Meta - Retargeting,4575,189,82,22,2,5221.38,8917.62
+2025-11,Paid Social,Meta - Prospecting,4608,170,55,12,1,4727.92,3779.04
+2025-11,Email,Newsletter,2625,266,162,82,30,121.84,124043.68
+2025-11,Email,Nurture Sequence,2307,163,105,45,13,107.29,49373.58
+2025-11,Email,Product Updates,2675,185,102,42,12,136.06,50298.54
+2025-11,Referral,Partner Referral,2086,177,126,66,26,0.0,117812.7
+2025-11,Referral,Customer Referral,2068,185,121,56,24,0.0,108923.3
+2025-11,Direct,Direct/None,9226,508,273,93,26,0.0,109161.24
+2025-11,Content Syndication,Sponsored Content,3008,63,18,3,0,9848.96,0.0
+2025-11,Content Syndication,Webinar Syndication,2704,54,18,3,0,9650.4,0.0
+2025-12,Organic Search,SEO - Blog,6530,317,181,86,25,0.0,113235.13
+2025-12,Organic Search,SEO - Comparison Pages,7842,384,240,106,35,0.0,157249.44
+2025-12,Organic Search,SEO - Landing Pages,6870,315,181,86,29,0.0,130341.35
+2025-12,Paid Search,Google Ads - Brand,3760,229,101,28,7,7879.73,33682.46
+2025-12,Paid Search,Google Ads - Competitor,3461,267,129,50,8,7348.72,36644.76
+2025-12,Paid Search,Google Ads - Generic,3943,289,124,41,6,7633.25,26525.31
+2025-12,Paid Social,LinkedIn - Lead Gen,4962,192,80,21,3,4965.83,11596.54
+2025-12,Paid Social,Meta - Retargeting,4834,193,62,15,2,4817.15,8151.42
+2025-12,Paid Social,Meta - Prospecting,5217,195,68,19,2,6144.25,7893.34
+2025-12,Email,Newsletter,2395,195,109,56,14,109.81,56011.59
+2025-12,Email,Nurture Sequence,2484,237,163,67,19,115.18,81592.43
+2025-12,Email,Product Updates,2680,246,151,65,23,133.92,86003.95
+2025-12,Referral,Partner Referral,2237,175,103,41,15,0.0,60038.23
+2025-12,Referral,Customer Referral,2276,255,178,90,30,0.0,115986.67
+2025-12,Direct,Direct/None,7734,494,239,86,21,0.0,82891.68
+2025-12,Content Syndication,Sponsored Content,2688,62,16,3,0,9523.7,0.0
+2025-12,Content Syndication,Webinar Syndication,3163,77,22,4,0,11767.14,0.0
+2026-01,Organic Search,SEO - Blog,7299,287,160,53,15,0.0,63240.64
+2026-01,Organic Search,SEO - Comparison Pages,6584,241,150,50,10,0.0,36525.68
+2026-01,Organic Search,SEO - Landing Pages,6629,300,155,50,11,0.0,40108.92
+2026-01,Paid Search,Google Ads - Brand,3559,204,95,31,6,6728.99,22267.25
+2026-01,Paid Search,Google Ads - Competitor,3725,193,96,33,6,7715.06,27321.19
+2026-01,Paid Search,Google Ads - Generic,3703,217,102,32,6,8061.31,23145.59
+2026-01,Paid Social,LinkedIn - Lead Gen,4252,174,57,14,2,4350.22,7259.38
+2026-01,Paid Social,Meta - Retargeting,3993,163,52,11,1,4050.25,4351.39
+2026-01,Paid Social,Meta - Prospecting,4132,148,57,16,1,4866.43,4350.09
+2026-01,Email,Newsletter,2013,189,125,50,18,99.73,77945.67
+2026-01,Email,Nurture Sequence,2565,205,134,55,18,130.83,69166.95
+2026-01,Email,Product Updates,2182,171,89,32,8,98.61,30228.12
+2026-01,Referral,Partner Referral,2391,246,171,79,35,0.0,130507.76
+2026-01,Referral,Customer Referral,2000,204,119,59,27,0.0,96954.04
+2026-01,Direct,Direct/None,8999,511,217,82,23,0.0,100129.53
+2026-01,Content Syndication,Sponsored Content,2609,53,16,2,0,9745.58,0.0
+2026-01,Content Syndication,Webinar Syndication,2880,64,21,3,0,10187.94,0.0
+2026-02,Organic Search,SEO - Blog,6772,332,186,82,28,0.0,118114.49
+2026-02,Organic Search,SEO - Comparison Pages,5489,276,152,58,12,0.0,48812.51
+2026-02,Organic Search,SEO - Landing Pages,6781,262,164,57,13,0.0,61358.11
+2026-02,Paid Search,Google Ads - Brand,2937,188,100,40,8,6188.69,36036.5
+2026-02,Paid Search,Google Ads - Competitor,3437,248,126,37,9,7745.42,41180.42
+2026-02,Paid Search,Google Ads - Generic,2828,162,86,24,6,5792.88,26858.0
+2026-02,Paid Social,LinkedIn - Lead Gen,4784,160,57,14,2,5166.77,8656.47
+2026-02,Paid Social,Meta - Retargeting,4846,167,57,13,1,4937.32,3775.22
+2026-02,Paid Social,Meta - Prospecting,4523,148,63,14,1,5227.55,4680.11
+2026-02,Email,Newsletter,2000,149,80,36,10,95.19,36269.18
+2026-02,Email,Nurture Sequence,2131,214,134,60,14,101.27,55179.81
+2026-02,Email,Product Updates,2313,226,151,81,30,126.13,109814.88
+2026-02,Referral,Partner Referral,1910,167,110,46,20,0.0,85067.58
+2026-02,Referral,Customer Referral,1928,165,96,54,21,0.0,82803.03
+2026-02,Direct,Direct/None,7211,381,197,72,14,0.0,52108.36
+2026-02,Content Syndication,Sponsored Content,2997,62,17,3,0,10308.17,0.0
+2026-02,Content Syndication,Webinar Syndication,2474,67,22,4,0,8712.43,0.0
+2026-03,Organic Search,SEO - Blog,5759,224,139,64,20,0.0,83763.32
+2026-03,Organic Search,SEO - Comparison Pages,6292,287,154,52,11,0.0,45950.95
+2026-03,Organic Search,SEO - Landing Pages,7084,275,153,54,13,0.0,48358.46
+2026-03,Paid Search,Google Ads - Brand,3508,211,108,37,7,7413.78,26641.45
+2026-03,Paid Search,Google Ads - Competitor,3575,261,139,48,8,8139.13,32001.18
+2026-03,Paid Search,Google Ads - Generic,2697,164,89,32,7,5996.31,26859.44
+2026-03,Paid Social,LinkedIn - Lead Gen,4686,159,62,12,2,4928.72,7296.4
+2026-03,Paid Social,Meta - Retargeting,4105,122,41,10,1,4896.47,3972.14
+2026-03,Paid Social,Meta - Prospecting,4439,152,60,15,2,5322.42,8003.64
+2026-03,Email,Newsletter,1877,170,112,41,11,101.22,49659.71
+2026-03,Email,Nurture Sequence,2385,205,128,53,19,116.06,85509.95
+2026-03,Email,Product Updates,2018,175,111,50,18,99.27,78935.59
+2026-03,Referral,Partner Referral,1980,181,115,48,14,0.0,61543.33
+2026-03,Referral,Customer Referral,2180,167,102,44,19,0.0,73735.53
+2026-03,Direct,Direct/None,7642,357,159,44,9,0.0,42453.11
+2026-03,Content Syndication,Sponsored Content,2366,60,19,4,0,7875.41,0.0
+2026-03,Content Syndication,Webinar Syndication,2458,73,21,4,0,8431.05,0.0
+2026-04,Organic Search,SEO - Blog,6436,283,176,80,20,0.0,83743.57
+2026-04,Organic Search,SEO - Comparison Pages,6477,272,138,64,21,0.0,100853.29
+2026-04,Organic Search,SEO - Landing Pages,6688,332,196,77,21,0.0,92031.92
+2026-04,Paid Search,Google Ads - Brand,2918,171,87,29,5,6515.15,23271.59
+2026-04,Paid Search,Google Ads - Competitor,2804,146,69,27,6,5462.47,27273.98
+2026-04,Paid Search,Google Ads - Generic,2756,171,98,30,5,5698.24,21753.91
+2026-04,Paid Social,LinkedIn - Lead Gen,4693,195,64,13,2,4925.49,9369.82
+2026-04,Paid Social,Meta - Retargeting,4357,128,53,11,1,4842.72,4200.97
+2026-04,Paid Social,Meta - Prospecting,4385,162,70,20,2,4432.99,8974.17
+2026-04,Email,Newsletter,2373,187,110,48,11,122.74,44167.26
+2026-04,Email,Nurture Sequence,2255,217,142,61,16,118.36,73276.01
+2026-04,Email,Product Updates,2071,203,108,55,13,96.37,55154.3
+2026-04,Referral,Partner Referral,1807,140,77,37,15,0.0,65877.67
+2026-04,Referral,Customer Referral,2278,187,108,61,26,0.0,119656.99
+2026-04,Direct,Direct/None,6380,336,172,51,13,0.0,58699.36
+2026-04,Content Syndication,Sponsored Content,2568,60,16,2,0,8302.95,0.0
+2026-04,Content Syndication,Webinar Syndication,2343,50,16,2,0,7605.49,0.0
+2026-05,Organic Search,SEO - Blog,6352,273,167,79,26,0.0,100053.34
+2026-05,Organic Search,SEO - Comparison Pages,6753,278,163,66,18,0.0,80374.88
+2026-05,Organic Search,SEO - Landing Pages,5535,204,115,45,11,0.0,49774.64
+2026-05,Paid Search,Google Ads - Brand,3541,235,113,35,7,7160.59,29965.32
+2026-05,Paid Search,Google Ads - Competitor,3396,182,77,23,6,7340.26,22720.02
+2026-05,Paid Search,Google Ads - Generic,3603,231,114,46,7,7135.29,30156.5
+2026-05,Paid Social,LinkedIn - Lead Gen,3908,146,50,10,1,4232.37,3791.93
+2026-05,Paid Social,Meta - Retargeting,3829,153,55,12,1,4091.75,3903.66
+2026-05,Paid Social,Meta - Prospecting,4443,137,58,16,1,4503.55,3715.31
+2026-05,Email,Newsletter,2227,160,106,52,18,111.93,86864.64
+2026-05,Email,Nurture Sequence,1856,151,85,45,14,98.48,52984.82
+2026-05,Email,Product Updates,2459,208,124,66,18,120.43,77522.19
+2026-05,Referral,Partner Referral,1910,168,99,41,18,0.0,72394.7
+2026-05,Referral,Customer Referral,2091,193,130,76,35,0.0,139470.47
+2026-05,Direct,Direct/None,7416,418,198,69,17,0.0,68095.55
+2026-05,Content Syndication,Sponsored Content,2590,54,14,2,0,8547.46,0.0
+2026-05,Content Syndication,Webinar Syndication,2894,65,21,4,0,10471.25,0.0
+2026-06,Organic Search,SEO - Blog,7800,335,207,85,17,0.0,75264.57
+2026-06,Organic Search,SEO - Comparison Pages,7010,255,150,68,19,0.0,67961.03
+2026-06,Organic Search,SEO - Landing Pages,7472,313,191,72,20,0.0,75446.83
+2026-06,Paid Search,Google Ads - Brand,3724,241,121,50,13,8376.65,49483.04
+2026-06,Paid Search,Google Ads - Competitor,3537,264,127,37,9,7400.61,38530.21
+2026-06,Paid Search,Google Ads - Generic,3938,266,130,43,9,7638.65,41142.47
+2026-06,Paid Social,LinkedIn - Lead Gen,5051,161,57,16,1,5578.83,4154.23
+2026-06,Paid Social,Meta - Retargeting,4848,146,58,13,1,4842.28,4151.78
+2026-06,Paid Social,Meta - Prospecting,4617,143,48,10,1,4669.16,4763.62
+2026-06,Email,Newsletter,2228,212,145,54,17,119.67,74275.3
+2026-06,Email,Nurture Sequence,2244,185,95,43,16,122.49,57934.45
+2026-06,Email,Product Updates,2435,190,127,46,16,129.97,59488.89
+2026-06,Referral,Partner Referral,1990,214,124,62,28,0.0,113974.39
+2026-06,Referral,Customer Referral,2255,176,130,60,19,0.0,90917.09
+2026-06,Direct,Direct/None,7050,444,226,84,24,0.0,114207.88
+2026-06,Content Syndication,Sponsored Content,2546,71,21,3,0,9751.85,0.0
+2026-06,Content Syndication,Webinar Syndication,2852,70,20,3,0,9162.98,0.0

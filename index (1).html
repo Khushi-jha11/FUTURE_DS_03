@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funnel Analytics — Visitor to Customer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --ink:#0E1A2B;
+    --ink-2:#132238;
+    --panel:#16273E;
+    --line:#25405F;
+    --paper:#EDEFEA;
+    --paper-dim:#A9B4C4;
+    --amber:#F2A93B;
+    --teal:#3FC6C6;
+    --coral:#EF6F6C;
+    --green:#63C77B;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--ink);color:var(--paper);font-family:'IBM Plex Mono',monospace;}
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
+  body{background:
+      radial-gradient(circle at 15% 0%, rgba(63,198,198,0.08), transparent 40%),
+      radial-gradient(circle at 85% 10%, rgba(242,169,59,0.07), transparent 45%),
+      var(--ink);
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:48px 28px 80px;}
+
+  header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:36px;}
+  .eyebrow{color:var(--teal);letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin:0 0 8px;}
+  header h1{font-size:32px;font-weight:700;margin:0;color:var(--paper);}
+  header p{color:var(--paper-dim);margin:8px 0 0;font-size:14px;max-width:520px;}
+  .period{font-size:13px;color:var(--paper-dim);text-align:right;}
+  .period strong{color:var(--amber);display:block;font-family:'Space Grotesk',sans-serif;font-size:15px;}
+
+  .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:44px;}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 16px;}
+  .kpi .label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--paper-dim);}
+  .kpi .value{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;margin-top:6px;color:var(--paper);}
+  .kpi .sub{font-size:11.5px;margin-top:4px;color:var(--teal);}
+  .kpi.warn .value{color:var(--coral);}
+  .kpi.warn .sub{color:var(--coral);}
+
+  section{margin-bottom:52px;}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
+  .section-head h2{font-size:19px;margin:0;color:var(--paper);}
+  .section-head .hint{font-size:12px;color:var(--paper-dim);}
+
+  /* Funnel — subway-map styled stepped diagram */
+  .funnel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:28px 30px 20px;}
+  .funnel-track{position:relative;padding-left:20px;}
+  .stage{display:grid;grid-template-columns:150px 1fr 190px;align-items:center;gap:18px;padding:14px 0;position:relative;}
+  .stage:not(:last-child){border-bottom:1px dashed var(--line);}
+  .stage .dot{position:absolute;left:-20px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid var(--ink);top:50%;transform:translateY(-50%);}
+  .stage-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;}
+  .stage-name .n{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:12px;color:var(--paper-dim);margin-top:2px;}
+  .bar-track{height:14px;background:var(--ink-2);border-radius:7px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:7px;background:linear-gradient(90deg,var(--teal),var(--amber));}
+  .stage-meta{text-align:right;font-size:13px;}
+  .stage-meta .count{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--paper);}
+  .stage-meta .drop{color:var(--coral);font-size:11.5px;}
+  .funnel-track::before{content:'';position:absolute;left:-15px;top:8px;bottom:8px;width:1px;background:var(--line);}
+
+  .grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;}
+  .card h3{margin:0 0 14px;font-size:14px;color:var(--paper-dim);text-transform:uppercase;letter-spacing:.06em;font-weight:500;}
+  canvas{max-width:100%;}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{text-align:left;color:var(--paper-dim);font-weight:500;text-transform:uppercase;font-size:10.5px;letter-spacing:.06em;padding:8px 10px;border-bottom:1px solid var(--line);}
+  td{padding:10px 10px;border-bottom:1px solid var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;}
+  .pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;}
+  .pill.good{background:rgba(99,199,123,0.15);color:var(--green);}
+  .pill.mid{background:rgba(242,169,59,0.15);color:var(--amber);}
+  .pill.bad{background:rgba(239,111,108,0.15);color:var(--coral);}
+
+  .insights{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .insight{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;padding:16px 18px;}
+  .insight.pos{border-left-color:var(--green);}
+  .insight.neg{border-left-color:var(--coral);}
+  .insight .tag{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--paper-dim);}
+  .insight p{margin:8px 0 0;font-size:13.5px;line-height:1.5;color:var(--paper);}
+
+  .reco{counter-reset:reco;}
+  .reco-item{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .reco-item:last-child{border-bottom:none;}
+  .reco-num{counter-increment:reco;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:var(--amber);}
+  .reco-item h4{margin:0 0 4px;font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--paper);}
+  .reco-item p{margin:0;font-size:13px;color:var(--paper-dim);line-height:1.55;}
+
+  footer{border-top:1px solid var(--line);padding-top:20px;margin-top:20px;font-size:11.5px;color:var(--paper-dim);text-align:center;}
+
+  @media(max-width:920px){
+    .kpis{grid-template-columns:repeat(2,1fr);}
+    .grid2{grid-template-columns:1fr;}
+    .insights{grid-template-columns:1fr;}
+    .stage{grid-template-columns:110px 1fr 130px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <p class="eyebrow">Growth &amp; Lead Funnel Analysis</p>
+      <h1>Visitor → Customer Funnel</h1>
+      <p>Simulated B2B SaaS marketing funnel across 7 acquisition channels, tracking visitors through leads, MQLs, SQLs, and closed-won customers.</p>
+    </div>
+    <div class="period">Reporting period<strong id="periodLabel">Jul 2025 – Jun 2026</strong></div>
+  </header>
+
+  <div class="kpis" id="kpiRow"></div>
+
+  <section>
+    <div class="section-head">
+      <h2>The Funnel</h2>
+      <span class="hint">Bar length = share of visitors reaching that stage</span>
+    </div>
+    <div class="funnel">
+      <div class="funnel-track" id="funnelTrack"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Monthly Trend</h2>
+      <span class="hint">Traffic volume vs. overall visitor→customer conversion</span>
+    </div>
+    <div class="card">
+      <canvas id="trendChart" height="90"></canvas>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Channel Performance</h2>
+      <span class="hint">Sorted by customers won</span>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Customers Won &amp; Lead Quality by Channel</h3>
+        <canvas id="channelChart" height="230"></canvas>
+      </div>
+      <div class="card">
+        <h3>Channel Detail</h3>
+        <table id="channelTable">
+          <thead><tr><th>Channel</th><th class="num">Leads</th><th class="num">Cust.</th><th class="num">L→C</th><th class="num">CAC</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Key Insights</h2></div>
+    <div class="insights">
+      <div class="insight neg">
+        <div class="tag">Biggest Leak</div>
+        <p>The Visitor → Lead step loses ~95% of traffic — by far the largest drop of any stage. Even a small lift here compounds through every downstream stage.</p>
+      </div>
+      <div class="insight pos">
+        <div class="tag">Best Lead Quality</div>
+        <p>Referral and Email convert leads to customers 2–4x better than paid channels, despite bringing in far less volume.</p>
+      </div>
+      <div class="insight neg">
+        <div class="tag">Worst Spend Efficiency</div>
+        <p>Content Syndication produced zero customers this year while costing the most per lead — the clearest candidate for budget reallocation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><h2>Recommendations</h2></div>
+    <div class="card reco" id="recoList"></div>
+  </section>
+
+  <footer>Simulated dataset for demonstration purposes · Built with Python (pandas, matplotlib) + Chart.js · Funnel Analysis Project</footer>
+</div>
+
+<script>
+const DATA = {
+  "monthly": [
+    {
+      "month": "2025-07",
+      "visitors": 60065,
+      "leads": 3100,
+      "mqls": 1675,
+      "sqls": 644,
+      "customers": 161,
+      "v2cust": 0.268
+    },
+    {
+      "month": "2025-08",
+      "visitors": 63626,
+      "leads": 3439,
+      "mqls": 1688,
+      "sqls": 642,
+      "customers": 175,
+      "v2cust": 0.275
+    },
+    {
+      "month": "2025-09",
+      "visitors": 67742,
+      "leads": 3468,
+      "mqls": 1765,
+      "sqls": 697,
+      "customers": 193,
+      "v2cust": 0.285
+    },
+    {
+      "month": "2025-10",
+      "visitors": 72646,
+      "leads": 3790,
+      "mqls": 1911,
+      "sqls": 750,
+      "customers": 204,
+      "v2cust": 0.281
+    },
+    {
+      "month": "2025-11",
+      "visitors": 72552,
+      "leads": 3755,
+      "mqls": 1989,
+      "sqls": 762,
+      "customers": 216,
+      "v2cust": 0.298
+    },
+    {
+      "month": "2025-12",
+      "visitors": 73076,
+      "leads": 4122,
+      "mqls": 2147,
+      "sqls": 864,
+      "customers": 239,
+      "v2cust": 0.327
+    },
+    {
+      "month": "2026-01",
+      "visitors": 69515,
+      "leads": 3570,
+      "mqls": 1816,
+      "sqls": 652,
+      "customers": 187,
+      "v2cust": 0.269
+    },
+    {
+      "month": "2026-02",
+      "visitors": 65361,
+      "leads": 3374,
+      "mqls": 1798,
+      "sqls": 695,
+      "customers": 189,
+      "v2cust": 0.289
+    },
+    {
+      "month": "2026-03",
+      "visitors": 65051,
+      "leads": 3243,
+      "mqls": 1712,
+      "sqls": 612,
+      "customers": 161,
+      "v2cust": 0.247
+    },
+    {
+      "month": "2026-04",
+      "visitors": 63589,
+      "leads": 3240,
+      "mqls": 1700,
+      "sqls": 668,
+      "customers": 177,
+      "v2cust": 0.278
+    },
+    {
+      "month": "2026-05",
+      "visitors": 64803,
+      "leads": 3256,
+      "mqls": 1689,
+      "sqls": 687,
+      "customers": 198,
+      "v2cust": 0.306
+    },
+    {
+      "month": "2026-06",
+      "visitors": 71597,
+      "leads": 3686,
+      "mqls": 1977,
+      "sqls": 749,
+      "customers": 210,
+      "v2cust": 0.293
+    }
+  ],
+  "channel": [
+    {
+      "channel": "Organic Search",
+      "visitors": 241969,
+      "leads": 10398,
+      "mqls": 5908,
+      "sqls": 2385,
+      "customers": 642,
+      "spend_usd": 0.0,
+      "revenue_usd": 2715279.17,
+      "v2l": 0.04,
+      "l2cust": 0.06,
+      "v2cust": 0.0,
+      "cpl": 0.0,
+      "cac": 0.0,
+      "roas": null
+    },
+    {
+      "channel": "Referral",
+      "visitors": 49948,
+      "leads": 4560,
+      "mqls": 2870,
+      "sqls": 1407,
+      "customers": 570,
+      "spend_usd": 0.0,
+      "revenue_usd": 2335053.98,
+      "v2l": 0.09,
+      "l2cust": 0.12,
+      "v2cust": 0.01,
+      "cpl": 0.0,
+      "cac": 0.0,
+      "roas": null
+    },
+    {
+      "channel": "Email",
+      "visitors": 80799,
+      "leads": 6836,
+      "mqls": 4165,
+      "sqls": 1845,
+      "customers": 563,
+      "spend_usd": 4039.32,
+      "revenue_usd": 2323168.57,
+      "v2l": 0.08,
+      "l2cust": 0.08,
+      "v2cust": 0.01,
+      "cpl": 0.59,
+      "cac": 7.174635879218473,
+      "roas": 575.1385307427983
+    },
+    {
+      "channel": "Paid Search",
+      "visitors": 121706,
+      "leads": 7818,
+      "mqls": 3860,
+      "sqls": 1326,
+      "customers": 273,
+      "spend_usd": 254776.2,
+      "revenue_usd": 1135185.65,
+      "v2l": 0.06,
+      "l2cust": 0.03,
+      "v2cust": 0.0,
+      "cpl": 32.59,
+      "cac": 933.246153846154,
+      "roas": 4.455618892188516
+    },
+    {
+      "channel": "Direct",
+      "visitors": 89150,
+      "leads": 5200,
+      "mqls": 2508,
+      "sqls": 871,
+      "customers": 211,
+      "spend_usd": 0.0,
+      "revenue_usd": 905742.15,
+      "v2l": 0.06,
+      "l2cust": 0.04,
+      "v2cust": 0.0,
+      "cpl": 0.0,
+      "cac": 0.0,
+      "roas": null
+    },
+    {
+      "channel": "Paid Social",
+      "visitors": 160469,
+      "leads": 5656,
+      "mqls": 2093,
+      "sqls": 511,
+      "customers": 51,
+      "spend_usd": 175659.55,
+      "revenue_usd": 212196.89,
+      "v2l": 0.04,
+      "l2cust": 0.01,
+      "v2cust": 0.0,
+      "cpl": 31.06,
+      "cac": 3444.3049019607843,
+      "roas": 1.2080008744187265
+    },
+    {
+      "channel": "Content Syndication",
+      "visitors": 65582,
+      "leads": 1575,
+      "mqls": 463,
+      "sqls": 77,
+      "customers": 0,
+      "spend_usd": 228769.81,
+      "revenue_usd": 0.0,
+      "v2l": 0.02,
+      "l2cust": 0.0,
+      "v2cust": 0.0,
+      "cpl": 145.25,
+      "cac": null,
+      "roas": 0.0
+    }
+  ],
+  "totals": {
+    "visitors": 809623.0,
+    "leads": 42043.0,
+    "mqls": 21867.0,
+    "sqls": 8422.0,
+    "customers": 2310.0,
+    "spend_usd": 663244.8799999999,
+    "revenue_usd": 9626626.41
+  }
+};
+
+const fmt = n => n>=1000000?(n/1000000).toFixed(2)+'M':n>=1000?(n/1000).toFixed(1)+'K':Math.round(n).toLocaleString();
+const pct = n => (n*100).toFixed(1)+'%';
+
+// ---- KPIs ----
+const t = DATA.totals;
+const v2c = t.customers/t.visitors;
+const roas = t.revenue_usd/t.spend_usd;
+const kpis = [
+  {label:'Total Visitors', value: fmt(t.visitors), sub:'12-month total'},
+  {label:'Leads Captured', value: fmt(t.leads), sub: pct(t.leads/t.visitors)+' of visitors'},
+  {label:'Customers Won', value: fmt(t.customers), sub: pct(t.customers/t.sqls)+' of SQLs'},
+  {label:'Overall Conversion', value: pct(v2c), sub:'visitor → customer', warn:true},
+  {label:'Blended ROAS', value: roas.toFixed(1)+'x', sub:'$'+fmt(t.revenue_usd)+' revenue'},
+];
+document.getElementById('kpiRow').innerHTML = kpis.map(k=>`
+  <div class="kpi ${k.warn?'warn':''}">
+    <div class="label">${k.label}</div>
+    <div class="value">${k.value}</div>
+    <div class="sub">${k.sub}</div>
+  </div>`).join('');
+
+// ---- Funnel track ----
+const stages = [
+  {name:'Visitors', key:'visitors'},
+  {name:'Leads', key:'leads'},
+  {name:'MQLs', key:'mqls'},
+  {name:'SQLs', key:'sqls'},
+  {name:'Customers', key:'customers'},
+];
+let track = '';
+stages.forEach((s,i)=>{
+  const val = t[s.key];
+  const share = val/t.visitors;
+  const prev = i>0 ? t[stages[i-1].key] : null;
+  const dropPct = prev ? (1 - val/prev) : null;
+  track += `
+    <div class="stage">
+      <div class="dot"></div>
+      <div class="stage-name">${s.name}<span class="n">stage ${i+1} of 5</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(share*100,1.2)}%"></div></div>
+      <div class="stage-meta">
+        <div class="count">${fmt(val)}</div>
+        ${dropPct!==null ? `<div class="drop">−${pct(dropPct)} drop from prior stage</div>` : `<div class="drop" style="color:var(--paper-dim)">${pct(share)} of visitors</div>`}
+      </div>
+    </div>`;
+});
+document.getElementById('funnelTrack').innerHTML = track;
+
+// ---- Trend chart ----
+new Chart(document.getElementById('trendChart'), {
+  data: {
+    labels: DATA.monthly.map(m=>m.month),
+    datasets: [
+      {type:'bar', label:'Visitors', data: DATA.monthly.map(m=>m.visitors), backgroundColor:'rgba(63,198,198,0.35)', yAxisID:'y', borderRadius:4},
+      {type:'line', label:'Visitor→Customer %', data: DATA.monthly.map(m=>m.v2cust), borderColor:'#F2A93B', backgroundColor:'#F2A93B', yAxisID:'y1', tension:.35, pointRadius:3}
+    ]
+  },
+  options: {
+    responsive:true,
+    interaction:{mode:'index',intersect:false},
+    plugins:{legend:{labels:{color:'#EDEFEA',font:{family:"'IBM Plex Mono'",size:11}}}},
+    scales:{
+      x:{ticks:{color:'#A9B4C4',font:{size:10}},grid:{color:'#25405F'}},
+      y:{position:'left',ticks:{color:'#A9B4C4',font:{size:10}},grid:{color:'#25405F'},title:{display:true,text:'Visitors',color:'#A9B4C4',font:{size:11}}},
+      y1:{position:'right',ticks:{color:'#F2A93B',font:{size:10}},grid:{display:false},title:{display:true,text:'Conversion %',color:'#F2A93B',font:{size:11}}}
+    }
+  }
+});
+
+// ---- Channel chart ----
+const chSorted = [...DATA.channel].sort((a,b)=>b.customers-a.customers);
+new Chart(document.getElementById('channelChart'), {
+  type:'bar',
+  data:{
+    labels: chSorted.map(c=>c.channel),
+    datasets:[
+      {label:'Customers Won', data: chSorted.map(c=>c.customers), backgroundColor:'#3FC6C6', borderRadius:4, yAxisID:'y'},
+      {label:'Lead→Customer %', data: chSorted.map(c=>+(c.l2cust*100).toFixed(1)), type:'line', borderColor:'#F2A93B', backgroundColor:'#F2A93B', yAxisID:'y1', tension:.3, pointRadius:4}
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{labels:{color:'#EDEFEA',font:{family:"'IBM Plex Mono'",size:11}}}},
+    scales:{
+      x:{ticks:{color:'#A9B4C4',font:{size:10},maxRotation:30,minRotation:20},grid:{display:false}},
+      y:{position:'left',ticks:{color:'#A9B4C4',font:{size:10}},grid:{color:'#25405F'},title:{display:true,text:'Customers',color:'#A9B4C4',font:{size:11}}},
+      y1:{position:'right',ticks:{color:'#F2A93B',font:{size:10}},grid:{display:false},title:{display:true,text:'L→C %',color:'#F2A93B',font:{size:11}}}
+    }
+  }
+});
+
+// ---- Channel table ----
+function badge(rate){
+  if(rate>=0.08) return 'good';
+  if(rate>=0.04) return 'mid';
+  return 'bad';
+}
+document.querySelector('#channelTable tbody').innerHTML = chSorted.map(c=>`
+  <tr>
+    <td>${c.channel}</td>
+    <td class="num">${fmt(c.leads)}</td>
+    <td class="num">${fmt(c.customers)}</td>
+    <td class="num"><span class="pill ${badge(c.l2cust)}">${pct(c.l2cust)}</span></td>
+    <td class="num">${c.cac ? '$'+Math.round(c.cac).toLocaleString() : '—'}</td>
+  </tr>`).join('');
+
+// ---- Recommendations ----
+const recos = [
+  {h:'Fix the Visitor→Lead leak first', p:'This stage loses more traffic (≈95%) than any other. Test above-the-fold CTAs, shorten lead-capture forms, and add exit-intent offers on the highest-traffic landing pages before optimizing anything downstream.'},
+  {h:'Shift budget from Content Syndication to Referral & Email', p:'Content Syndication has the highest cost-per-lead and zero closed-won customers this year. Referral and Email cost the least and convert leads to customers 2–4x better — redirect spend there.'},
+  {h:'Build a formal referral/advocacy program', p:'Referral already has the best lead-to-customer rate (12.5%) at zero media cost. A structured incentive program could scale this channel\\'s volume without hurting quality.'},
+  {h:'Re-evaluate Paid Social targeting', p:'Paid Social brings meaningful traffic but converts leads to customers at under 1% — the weakest of any channel. Tighten audience targeting or reallocate spend toward Paid Search, which converts ~4x better.'},
+  {h:'Investigate the SQL→Customer stage', p:'This is the second-largest percentage drop (≈73%). Review sales follow-up speed, deal stage definitions, and objection patterns with the sales team — this is a sales-process issue, not just a marketing one.'},
+];
+document.getElementById('recoList').innerHTML = recos.map((r,i)=>`
+  <div class="reco-item">
+    <div class="reco-num">${(i+1).toString().padStart(2,'0')}</div>
+    <div><h4>${r.h}</h4><p>${r.p}</p></div>
+  </div>`).join('');
+</script>
+</body>
+</html>
